@@ -32,6 +32,27 @@ function profile(props) {
           props.navigation.navigate("Home");
         }}
       />
+      <Button
+        title="about page"
+        onPress={() => {
+          props.navigation.navigate("About");
+        }}
+      />
+    </View>
+  );
+}
+
+function about(props) {
+  return (
+    <View style={{ flex: 1 }}>
+      <Text style={{ fontSize: 50 }}>About Page</Text>
+
+      <Button
+        title="home page"
+        onPress={() => {
+          props.navigation.navigate("Home");
+        }}
+      />
     </View>
   );
 }
@@ -43,6 +64,9 @@ const AppNavigator = createStackNavigator({
 
   myProfile: {
     screen: profile,
+  },
+  About: {
+    screen: about,
   },
 });
 

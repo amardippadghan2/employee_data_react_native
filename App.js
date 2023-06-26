@@ -5,16 +5,19 @@ import { TextInput } from "react-native";
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
+import Form from "./components/Form";
+import { Component } from "react/cjs/react.production.min";
+import PersonalInfo from "./components/PersonalInfo";
+
 class App extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <Text style={{ fontSize: 50 }}>this is home screen</Text>
-
+        <Form />
         <Button
-          title="profile page"
+          title="Next"
           onPress={() => {
-            this.props.navigation.navigate("myProfile");
+            this.props.navigation.navigate("Personal");
           }}
         />
       </SafeAreaView>
@@ -22,37 +25,10 @@ class App extends React.Component {
   }
 }
 
-function profile(props) {
+function personal(props) {
   return (
-    <View style={{ flex: 1 }}>
-      <Text style={{ fontSize: 50 }}>This is profile page</Text>
-      <Button
-        title="home page"
-        onPress={() => {
-          props.navigation.navigate("Home");
-        }}
-      />
-      <Button
-        title="about page"
-        onPress={() => {
-          props.navigation.navigate("About");
-        }}
-      />
-    </View>
-  );
-}
-
-function about(props) {
-  return (
-    <View style={{ flex: 1 }}>
-      <Text style={{ fontSize: 50 }}>About Page</Text>
-
-      <Button
-        title="home page"
-        onPress={() => {
-          props.navigation.navigate("Home");
-        }}
-      />
+    <View>
+      <PersonalInfo />
     </View>
   );
 }
@@ -61,12 +37,8 @@ const AppNavigator = createStackNavigator({
   Home: {
     screen: App,
   },
-
-  myProfile: {
-    screen: profile,
-  },
-  About: {
-    screen: about,
+  Personal: {
+    screen: personal,
   },
 });
 

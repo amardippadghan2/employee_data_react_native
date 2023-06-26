@@ -8,6 +8,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import Form from "./components/Form";
 import { Component } from "react/cjs/react.production.min";
 import PersonalInfo from "./components/PersonalInfo";
+import Header from "./components/Header";
 
 class App extends React.Component {
   render() {
@@ -36,9 +37,15 @@ function personal(props) {
 const AppNavigator = createStackNavigator({
   Home: {
     screen: App,
+    navigationOptions: {
+      headerTitle: () => <Header />,
+    },
   },
   Personal: {
     screen: personal,
+    navigationOptions: {
+      headerTitle: () => <Header />,
+    },
   },
 });
 

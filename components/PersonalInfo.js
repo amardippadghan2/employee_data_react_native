@@ -1,63 +1,105 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
+import { text } from "react-native";
 
 const Gender = ["MALE", "FEMALE"];
+
+const marrage = ["MARRIED", "UNMARRIED"];
 
 class PersonalInfo extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <TextInput
-          style={sty.textbox}
-          placeholder="Current Address"
-          maxLength={50}
-        />
-        <TextInput
-          style={sty.textbox}
-          placeholder="Permanet Address"
-          maxLength={50}
-        />
-        <TextInput style={sty.textbox} placeholder="Education" maxLength={50} />
+      <ScrollView style={{ backgroundColor: "white" }}>
+        <View>
+          <TextInput
+            style={sty.textbox}
+            placeholder="Current Address"
+            maxLength={50}
+          />
+          <TextInput
+            style={sty.textbox}
+            placeholder="Permanet Address"
+            maxLength={50}
+          />
+          <TextInput
+            style={sty.textbox}
+            placeholder="Education"
+            maxLength={50}
+          />
 
-        <View style={sty.select}>
-          <Text>Select Your Gender</Text>
-          <SelectDropdown
-            style={sty.select}
-            data={Gender}
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              // text represented after item is selected
-              // if data array is an array of objects then return selectedItem.property to render after item is selected
-              return selectedItem;
-            }}
-            rowTextForSelection={(item, index) => {
-              // text represented for each item in dropdown
-              // if data array is an array of objects then return item.property to represent item in dropdown
-              return item;
-            }}
+          <View style={sty.select}>
+            <Text>Select Your Gender</Text>
+            <SelectDropdown
+              style={sty.select}
+              data={Gender}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index);
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                // text represented after item is selected
+                // if data array is an array of objects then return selectedItem.property to render after item is selected
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                // text represented for each item in dropdown
+                // if data array is an array of objects then return item.property to represent item in dropdown
+                return item;
+              }}
+            />
+          </View>
+          <TextInput
+            style={sty.textbox}
+            placeholder="Blood Group"
+            maxLength={2}
+          />
+          <TextInput
+            style={sty.textbox}
+            placeholder="Your Weight in KG"
+            maxLength={3}
+            keyboardType="numeric"
+          />
+          <TextInput
+            style={sty.textbox}
+            placeholder="Your Height in cm"
+            maxLength={3}
+            keyboardType="numeric"
+          />
+          <View style={sty.select}>
+            <Text>Married/UnMarried</Text>
+            <SelectDropdown
+              style={sty.select}
+              data={marrage}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index);
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                // text represented after item is selected
+                // if data array is an array of objects then return selectedItem.property to render after item is selected
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                // text represented for each item in dropdown
+                // if data array is an array of objects then return item.property to represent item in dropdown
+                return item;
+              }}
+            />
+          </View>
+
+          <TextInput
+            style={sty.textbox}
+            placeholder="Referance Name "
+            maxLength={30}
+            value={text}
+          />
+          <TextInput
+            style={sty.textbox}
+            placeholder="Referance Mobile Number"
+            maxLength={10}
+            keyboardType="numeric"
           />
         </View>
-        <TextInput
-          style={sty.textbox}
-          placeholder="Blood Group"
-          maxLength={2}
-        />
-        <TextInput
-          style={sty.textbox}
-          placeholder="Your Weight"
-          maxLength={3}
-          keyboardType="numeric"
-        />
-        <TextInput
-          style={sty.textbox}
-          placeholder="Your Height in cm"
-          maxLength={3}
-          keyboardType="numeric"
-        />
-      </View>
+      </ScrollView>
     );
   }
 }

@@ -1,14 +1,22 @@
 import React, { Component } from "react";
-import { View, Text, TextInput, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  ScrollView,
+  Button,
+} from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 import { text } from "react-native";
 
 const Gender = ["MALE", "FEMALE"];
 
 const marrage = ["MARRIED", "UNMARRIED"];
+const Blood = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
 
 class PersonalInfo extends React.Component {
-  render() {
+  render(props) {
     return (
       <ScrollView style={{ backgroundColor: "white" }}>
         <View>
@@ -48,11 +56,26 @@ class PersonalInfo extends React.Component {
               }}
             />
           </View>
-          <TextInput
-            style={sty.textbox}
-            placeholder="Blood Group"
-            maxLength={2}
-          />
+          <View style={sty.select}>
+            <Text>Select Your Blood Group</Text>
+            <SelectDropdown
+              style={sty.select}
+              data={Blood}
+              onSelect={(selectedItem, index) => {
+                console.log(selectedItem, index);
+              }}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                // text represented after item is selected
+                // if data array is an array of objects then return selectedItem.property to render after item is selected
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                // text represented for each item in dropdown
+                // if data array is an array of objects then return item.property to represent item in dropdown
+                return item;
+              }}
+            />
+          </View>
           <TextInput
             style={sty.textbox}
             placeholder="Your Weight in KG"

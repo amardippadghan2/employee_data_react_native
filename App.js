@@ -9,6 +9,10 @@ import Form from "./components/Form";
 import { Component } from "react/cjs/react.production.min";
 import PersonalInfo from "./components/PersonalInfo";
 import Header from "./components/Header";
+import DocumentInfo from "./components/DocumentInfo";
+import FamilyDetail from "./components/FamilyDetail";
+
+import { ScrollView } from "react-native";
 
 class App extends React.Component {
   render() {
@@ -28,8 +32,43 @@ class App extends React.Component {
 
 function personal(props) {
   return (
+    <ScrollView>
+      <View>
+        <PersonalInfo />
+      </View>
+      <View>
+        <Button
+          title="Next"
+          onPress={() => {
+            props.navigation.navigate("Document");
+          }}
+        />
+      </View>
+    </ScrollView>
+  );
+}
+
+function Document(props) {
+  return (
+    <ScrollView>
+      <View>
+        <DocumentInfo />
+      </View>
+      <View>
+        <Button
+          title="Next"
+          onPress={() => {
+            props.navigation.navigate("Family");
+          }}
+        />
+      </View>
+    </ScrollView>
+  );
+}
+function Family(props) {
+  return (
     <View>
-      <PersonalInfo />
+      <FamilyDetail />
     </View>
   );
 }
@@ -44,7 +83,20 @@ const AppNavigator = createStackNavigator({
   Personal: {
     screen: personal,
     navigationOptions: {
-      headerTitle: () => <Header />,
+      title: "personal information",
+    },
+  },
+
+  Document: {
+    screen: Document,
+    navigationOptions: {
+      title: "Entre Your Document Detail",
+    },
+  },
+  Family: {
+    screen: Family,
+    navigationOptions: {
+      title: "Entre Your Family Detail",
     },
   },
 });
